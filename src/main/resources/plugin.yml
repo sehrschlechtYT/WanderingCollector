@@ -1,0 +1,10 @@
+name: WanderingCollector
+version: '${project.version}'
+main: yt.sehrschlecht.wanderingcollector.WanderingCollector
+api-version: 1.17
+description: A spigot port of the Wandering Collector mod.
+commands:
+  wanderingcollector:
+    permission: raftitems.admin
+    aliases:
+      - wc

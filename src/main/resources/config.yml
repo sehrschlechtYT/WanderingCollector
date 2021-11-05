@@ -1,0 +1,14 @@
+items:
+  blacklist:
+    - COMMAND_BLOCK
+  clear-meta: false
+
+trades:
+  buy-limit: 1
+  trade-count:
+    min: 3
+    max: 15
+  price:
+    min: 3
+    max: 20
+    item: EMERALD
