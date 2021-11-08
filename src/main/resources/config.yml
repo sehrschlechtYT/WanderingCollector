@@ -1,3 +1,6 @@
+trade-death-items: false #If this setting is enabled, when a player dies, all items that are dropped will be deleted and sold by wandering traders.
+trade-despawned-items: true #If this setting is enabled, when an item despawns, it will be sold by wandering traders.
+
 items:
   blacklist: #Items in this list won't be traded to players
     - COMMAND_BLOCK

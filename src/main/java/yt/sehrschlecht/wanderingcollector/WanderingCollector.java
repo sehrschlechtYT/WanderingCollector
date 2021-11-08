@@ -3,6 +3,7 @@ package yt.sehrschlecht.wanderingcollector;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import yt.sehrschlecht.wanderingcollector.commands.WanderingCollectorCommand;
+import yt.sehrschlecht.wanderingcollector.listeners.ItemListeners;
 import yt.sehrschlecht.wanderingcollector.listeners.PlayerListeners;
 import yt.sehrschlecht.wanderingcollector.listeners.WanderingTraderListeners;
 
@@ -20,6 +21,7 @@ public final class WanderingCollector extends JavaPlugin {
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new PlayerListeners(), this);
         pluginManager.registerEvents(new WanderingTraderListeners(), this);
+        pluginManager.registerEvents(new ItemListeners(), this);
     }
 
     @Override

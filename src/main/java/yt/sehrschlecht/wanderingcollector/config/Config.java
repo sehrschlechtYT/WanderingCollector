@@ -12,6 +12,9 @@ import java.util.stream.Collectors;
 public class Config {
     private static Config config = null;
 
+    private final boolean tradeDeathItems;
+    private final boolean tradeDespawnedItems;
+    
     private final List<String> itemBlacklist;
     private final boolean clearMeta;
 
@@ -22,7 +25,9 @@ public class Config {
     private final int maxPrice;
     private final String tradeItem;
 
-    public Config(List<String> itemBlacklist, boolean clearMeta, int buyLimit, int minTradeCount, int maxTradeCount, int minPrice, int maxPrice, String tradeItem) {
+    public Config(boolean tradeDeathItems, boolean tradeDespawnedItems, List<String> itemBlacklist, boolean clearMeta, int buyLimit, int minTradeCount, int maxTradeCount, int minPrice, int maxPrice, String tradeItem) {
+        this.tradeDeathItems = tradeDeathItems;
+        this.tradeDespawnedItems = tradeDespawnedItems;
         this.itemBlacklist = itemBlacklist;
         this.clearMeta = clearMeta;
         this.buyLimit = buyLimit;
@@ -44,6 +49,8 @@ public class Config {
     public static void reload() {
         FileConfiguration configuration = WanderingCollector.getPlugin().getConfig();
         config = new Config(
+                configuration.getBoolean("trade-death-items"),
+                configuration.getBoolean("trade-despawned-items"),
                 configuration.getStringList("items.blacklist"),
                 configuration.getBoolean("items.clear-meta"),
 
@@ -64,6 +71,14 @@ public class Config {
                 return null;
             }
         }).collect(Collectors.toList());
+    }
+
+    public boolean shouldTradeDeathItems() {
+        return tradeDeathItems;
+    }
+
+    public boolean shouldTradeDespawnedItems() {
+        return tradeDespawnedItems;
     }
 
     public boolean shouldClearMeta() {
