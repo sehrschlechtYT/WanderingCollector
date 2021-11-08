@@ -1,14 +1,14 @@
 items:
-  blacklist:
+  blacklist: #Items in this list won't be traded to players
     - COMMAND_BLOCK
-  clear-meta: false
+  clear-meta: false #If this is enabled, things like enchantments, a custom name and durability of an item will be cleared before the item is added to the trades.
 
 trades:
-  buy-limit: 1
-  trade-count:
+  buy-limit: 1 #This limits how often players can use a trade
+  trade-count: #This changes how many items the wandering trader should sell. A random number between min and max will be generated.
     min: 3
     max: 15
-  price:
+  price: #This changes the price of the trades. A random amount between min and max will be generated.
     min: 3
     max: 20
     item: EMERALD
