@@ -15,6 +15,7 @@ public class ItemListeners implements Listener {
         if(!config.shouldTradeDespawnedItems()) return;
         Item item = event.getEntity();
         ItemStack stack = item.getItemStack();
+        if(config.isWhitelistEnabled() && !config.getItemWhitelist().contains(stack.getType())) return;
         if(config.getItemBlacklist().contains(stack.getType())) return;
         ItemManager.addItemStack(stack);
         ItemManager.save();

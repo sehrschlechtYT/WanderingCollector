@@ -15,6 +15,7 @@ public class PlayerListeners implements Listener {
         if(!config.shouldTradeDeathItems()) return;
         for (ItemStack drop : event.getDrops()) {
             if(config.getItemBlacklist().contains(drop.getType())) continue;
+            if(config.isWhitelistEnabled() && !config.getItemWhitelist().contains(drop.getType())) continue;
             ItemManager.addItemStack(drop);
         }
         event.getDrops().clear();

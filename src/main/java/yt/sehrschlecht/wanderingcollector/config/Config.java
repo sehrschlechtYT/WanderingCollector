@@ -16,6 +16,10 @@ public class Config {
     private final boolean tradeDespawnedItems;
     
     private final List<String> itemBlacklist;
+
+    private final List<String> itemWhitelist;
+    private final boolean whitelistEnabled;
+
     private final boolean clearMeta;
 
     private final int buyLimit;
@@ -25,10 +29,12 @@ public class Config {
     private final int maxPrice;
     private final String tradeItem;
 
-    public Config(boolean tradeDeathItems, boolean tradeDespawnedItems, List<String> itemBlacklist, boolean clearMeta, int buyLimit, int minTradeCount, int maxTradeCount, int minPrice, int maxPrice, String tradeItem) {
+    public Config(boolean tradeDeathItems, boolean tradeDespawnedItems, List<String> itemBlacklist, List<String> itemWhitelist, boolean whitelistEnabled, boolean clearMeta, int buyLimit, int minTradeCount, int maxTradeCount, int minPrice, int maxPrice, String tradeItem) {
         this.tradeDeathItems = tradeDeathItems;
         this.tradeDespawnedItems = tradeDespawnedItems;
         this.itemBlacklist = itemBlacklist;
+        this.itemWhitelist = itemWhitelist;
+        this.whitelistEnabled = whitelistEnabled;
         this.clearMeta = clearMeta;
         this.buyLimit = buyLimit;
         this.minTradeCount = minTradeCount;
@@ -52,6 +58,8 @@ public class Config {
                 configuration.getBoolean("trade-death-items"),
                 configuration.getBoolean("trade-despawned-items"),
                 configuration.getStringList("items.blacklist"),
+                configuration.getStringList("items.whitelist.items"),
+                configuration.getBoolean("items.whitelist.enabled"),
                 configuration.getBoolean("items.clear-meta"),
 
                 configuration.getInt("trades.buy-limit"),
@@ -71,6 +79,21 @@ public class Config {
                 return null;
             }
         }).collect(Collectors.toList());
+    }
+
+    public List<Material> getItemWhitelist() {
+        return itemWhitelist.stream().map(material -> {
+            try {
+                return Material.valueOf(material.toUpperCase(Locale.ENGLISH));
+            } catch (Exception exception) {
+                WanderingCollector.getPlugin().getLogger().log(Level.SEVERE, "The specified material \"" + material + "\" is invalid!");
+                return null;
+            }
+        }).collect(Collectors.toList());
+    }
+
+    public boolean isWhitelistEnabled() {
+        return whitelistEnabled;
     }
 
     public boolean shouldTradeDeathItems() {

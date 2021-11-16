@@ -4,6 +4,12 @@ trade-despawned-items: true #If this setting is enabled, when an item despawns, 
 items:
   blacklist: #Items in this list won't be traded to players
     - COMMAND_BLOCK
+
+  whitelist:
+    items:
+      - DIAMOND
+    enabled: true #If the whitelist is enabled, only items that are in the whitelist will be sold by wandering traders.
+
   clear-meta: false #If this is enabled, things like enchantments, a custom name and durability of an item will be cleared before the item is added to the trades.
 
 trades:
