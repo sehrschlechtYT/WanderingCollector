@@ -19,6 +19,5 @@ public class PlayerListeners implements Listener {
             ItemManager.addItemStack(drop);
         }
         event.getDrops().clear();
-        ItemManager.save();
     }
 }

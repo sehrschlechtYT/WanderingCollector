@@ -18,6 +18,5 @@ public class ItemListeners implements Listener {
         if(config.isWhitelistEnabled() && !config.getItemWhitelist().contains(stack.getType())) return;
         if(config.getItemBlacklist().contains(stack.getType())) return;
         ItemManager.addItemStack(stack);
-        ItemManager.save();
     }
 }

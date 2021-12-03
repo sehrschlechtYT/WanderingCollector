@@ -6,6 +6,7 @@ import yt.sehrschlecht.wanderingcollector.commands.WanderingCollectorCommand;
 import yt.sehrschlecht.wanderingcollector.listeners.ItemListeners;
 import yt.sehrschlecht.wanderingcollector.listeners.PlayerListeners;
 import yt.sehrschlecht.wanderingcollector.listeners.WanderingTraderListeners;
+import yt.sehrschlecht.wanderingcollector.utils.ItemManager;
 
 public final class WanderingCollector extends JavaPlugin {
     private static WanderingCollector plugin;
@@ -26,7 +27,7 @@ public final class WanderingCollector extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        ItemManager.save();
     }
 
     public static WanderingCollector getPlugin() {

@@ -1,6 +1,5 @@
 package yt.sehrschlecht.wanderingcollector.utils;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,7 +15,6 @@ import java.util.logging.Level;
 
 public class ItemManager {
     private static FileConfiguration itemsConfig;
-    private static Gson gson;
 
     static {
         File file = new File("plugins/" + WanderingCollector.getPlugin().getName() + "/items.yml");
@@ -29,7 +27,8 @@ public class ItemManager {
             }
         }
         itemsConfig = YamlConfiguration.loadConfiguration(file);
-        gson = new Gson();
+
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(WanderingCollector.getPlugin(), ItemManager::save, 0L, 400L);
     }
 
     public static List<ItemStack> getItems() {
