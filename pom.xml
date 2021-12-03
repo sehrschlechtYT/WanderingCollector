@@ -6,7 +6,7 @@
 
     <groupId>yt.sehrschlecht</groupId>
     <artifactId>wanderingcollector</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
 
     <name>WanderingCollector</name>
